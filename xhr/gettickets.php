@@ -21,7 +21,7 @@ include("../db.php");
         }
         $result = $Mysql->query($sql);
             while ($row = $result->fetch_assoc()) {
-                $newdate = substr($row["datetime"], 11, 5) . " " . substr($row["datetime"], 8, 2) . "." . substr($row["datetime"], 5, 2) . "." . substr($row["datetime"], 0, 4);
+                $newdate = convert_datetime($row["datetime"],"H:i d.m.Y");
                 if ($row["solved"]==0){
                 echo "<tr><td><b><a href='ticket.php?id=" . $row["id"] . "'>" . $row["title"] . "</a></b></td><td>" . $newdate . "</td></tr>";
                 } else{

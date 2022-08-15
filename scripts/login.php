@@ -7,7 +7,7 @@ $newpassword = md5($password.$TRPS["salt"]);
 
 $result=$Mysql->query("SELECT * FROM `users` WHERE `login`='".$login."' AND `password`='".$newpassword."'");
 if ($result->num_rows!=0){
-    $date = date("m.d.Y H:i:s");
+    $date = gmdate("m.d.Y H:i:s");
     $token = md5($login.$date);
     $_SESSION["token"]=$token;
     $Mysql->query("UPDATE `users` SET `token`='".$token."' WHERE `login`='".$login."' AND `password`='".$newpassword."'");

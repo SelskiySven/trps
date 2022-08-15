@@ -30,3 +30,10 @@ if (isset($_SESSION["token"])) {
 if (!$USER->Autorized and $_SERVER["SERVER_NAME"].$_SERVER['PHP_SELF']!=$_SERVER["SERVER_NAME"].$TRPS["document_root"]){
     header( 'Location: '.$TRPS["document_root"]);
 }
+
+function convert_datetime($datetime, $format){
+    date_default_timezone_set("UTC");
+    $newdatetime= new datetime($datetime);
+    $newdatetime->setTimezone(new DateTimeZone($_COOKIE["timezone"]));
+    return $newdatetime->format($format);
+}

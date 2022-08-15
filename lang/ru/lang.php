@@ -31,3 +31,4 @@ $TRPS["lang"]["update"] = "Обновить";
 $TRPS["lang"]["id_of_problem"] = "Проблема №";
 $TRPS["lang"]["title_of_problem"] = "Название проблемы";
 $TRPS["lang"]["problem"] = "Проблема";
+$TRPS["lang"]["ticket_do_not_exists"] = "Такого запроса не существует";

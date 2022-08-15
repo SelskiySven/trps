@@ -15,7 +15,7 @@ include("frames/head.php");
                 <input type="submit" value=<?php echo '"' . $TRPS["lang"]["send"] . '"' ?>>
             </form>
         <?php else : ?>
-            <input type="text"><button><?php echo $TRPS["lang"]["search_for_id"] ?></button>
+            <input type="text" error_message=<?php echo "'".$TRPS["lang"]["ticket_do_not_exists"]."'"?> id="id_search"><button onclick="search_for_id()"><?php echo $TRPS["lang"]["search_for_id"] ?></button>
             <div onclick="change_sort()"><?php echo $TRPS["lang"]["date"] ?></div>
             <div onclick="change_limit(10)">10</div>
             <div onclick="change_limit(50)">50</div>
