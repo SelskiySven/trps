@@ -1,7 +1,8 @@
 function send_message() {
     let message = document.getElementById("new_message").value
+    document.getElementById("new_message").blur()
     document.getElementById("new_message").value = ""
-    message=message.replaceAll("\n","<br>")
+    message=message.replaceAll("\\","\\\\")
     if (message != "") {
         let ticket_id = document.getElementById("ticket_id").getAttribute("ticket_id")
         let sendMessage = new XMLHttpRequest()
@@ -31,3 +32,28 @@ document.addEventListener( 'keydown', event => {
         send_message()
     }
   });
+
+function takeTicket(){
+    let ticket_id = document.getElementById("ticket_id").getAttribute("ticket_id")
+    let take_ticket = new XMLHttpRequest()
+    take_ticket.responseType="document"
+    take_ticket.open("GET","scripts/taketicket.php?ticket="+ticket_id)
+    take_ticket.onload = function(){
+        if (take_ticket.response.body.innerHTML=="error"){
+            alert(document.getElementById("take_ticket").getAttribute("error"))
+        }
+        location.href = location.href
+    }
+    take_ticket.send()
+}
+
+function closeTicket(){
+    let ticket_id = document.getElementById("ticket_id").getAttribute("ticket_id")
+    let close_ticket = new XMLHttpRequest()
+    close_ticket.responseType="document"
+    close_ticket.open("GET","scripts/closeticket.php?ticket="+ticket_id)
+    close_ticket.onload = function(){
+        location.href = location.href
+    }
+    close_ticket.send()
+}

@@ -2,7 +2,9 @@
 include("../db.php");
 $userid=$USER->ID;
 $ticketid = $_GET["ticket"];
-$message = $_GET["message"];
+$message = str_replace("\\\\","\\",$_GET["message"]);
+$message = str_replace("<","&lt;",$message);
+$message = str_replace(">","&gt;",$message);
 $date = gmdate("Y-m-d H:i:s");
 
 $result=$Mysql->query("SELECT `created_by` FROM `tickets` WHERE `id`=".$ticketid);

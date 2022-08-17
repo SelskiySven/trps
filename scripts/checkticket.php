@@ -7,3 +7,4 @@ echo $result->num_rows;
 } else {
     header( 'Location: '.$TRPS["document_root"]);
 }
+exit;
