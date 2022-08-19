@@ -47,13 +47,14 @@ $count_users = $row["count"];
             <td><?php echo $TRPS["lang"]["support"]; ?></td>
             <td><?php echo $TRPS["lang"]["admin"]; ?></td>
             <td><?php echo $TRPS["lang"]["root"]; ?></td>
+            <td></td>
         </tr>
         <?php
         $root_disabled = "disabled";
         if ($USER->root) {
             $root_disabled = "";
         }
-        $result = $Mysql->query("SELECT `firstname`, `lastname`, `registration_date`, `support`, `admin`, `root` FROM `users` WHERE CONCAT(`lastname`,' ',`firstname`) LIKE '%" . $search . "%' ORDER BY " . $order . " " . $sorttype . " LIMIT " . ($page - 1) * $limit . ", " . $limit);
+        $result = $Mysql->query("SELECT `id`, `firstname`, `lastname`, `registration_date`, `support`, `admin`, `root` FROM `users` WHERE CONCAT(`lastname`,' ',`firstname`) LIKE '%" . $search . "%' ORDER BY " . $order . " " . $sorttype . " LIMIT " . ($page - 1) * $limit . ", " . $limit);
         while ($row = $result->fetch_assoc()) {
             $date = convert_datetime($row["registration_date"], "d.m.Y");
             $support_checked = "";
@@ -68,7 +69,7 @@ $count_users = $row["count"];
             if ($row["root"] == "1") {
                 $root_checked = "checked";
             }
-            echo "<tr><td>" . $row["lastname"] . " " . $row["firstname"] . "</td><td>" . $date . "</td><td><input type='checkbox' " . $support_checked . "></td><td><input type='checkbox' " . $admin_checked . " " . $root_disabled . "></td><td><input type='checkbox' " . $root_checked . " " . $root_disabled . "></td></tr>";
+            echo "<tr><td>" . $row["lastname"] . " " . $row["firstname"] . "</td><td>" . $date . "</td><td><input id='support_checkbox_".$row["id"]."' onchange = 'show_button(".$row["id"].")' type='checkbox' " . $support_checked . "></td><td><input id='admin_checkbox_".$row["id"]."' onchange = 'show_button(".$row["id"].")' type='checkbox' " . $admin_checked . " " . $root_disabled . "></td><td><input id='root_checkbox_".$row["id"]."' onchange = 'show_button(".$row["id"].")' type='checkbox' " . $root_checked . " " . $root_disabled . "></td><td><button id='save_button_".$row["id"]."' hidden onclick='change_role(".$row["id"].")'>".$TRPS["lang"]["save"]."</button></td></tr>";
         }
         ?>
     </table>

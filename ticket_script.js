@@ -2,7 +2,7 @@ function send_message() {
     let message = document.getElementById("new_message").value
     document.getElementById("new_message").blur()
     document.getElementById("new_message").value = ""
-    message=message.replaceAll("\\","\\\\")
+    message=message.replaceAll('\n',"\\n")
     if (message != "") {
         let ticket_id = document.getElementById("ticket_id").getAttribute("ticket_id")
         let sendMessage = new XMLHttpRequest()
@@ -25,7 +25,7 @@ function get_messages() {
     getMessage.send()
 }
 get_messages()
-let update_messages = setInterval(get_messages,5000)
+let update_messages = setInterval(get_messages,10000)
 
 document.addEventListener( 'keydown', event => {
     if (event.key == "Enter" & !event.shiftKey){

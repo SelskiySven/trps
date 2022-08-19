@@ -2,7 +2,7 @@
 include("../db.php");
 $userid=$USER->ID;
 $ticketid = $_GET["ticket"];
-$message = str_replace("\\\\","\\",$_GET["message"]);
+$message = $_GET["message"];
 $message = str_replace("<","&lt;",$message);
 $message = str_replace(">","&gt;",$message);
 $date = gmdate("Y-m-d H:i:s");

@@ -44,3 +44,15 @@ function change_sort_type() {
     }
     reload()
 }
+function show_button(id) {
+    document.getElementById("save_button_" + id).hidden = false
+}
+function change_role(id) {
+    let support = 0 + document.getElementById("support_checkbox_" + id).checked
+    let admin = 0 + document.getElementById("admin_checkbox_" + id).checked
+    let root = 0 + document.getElementById("root_checkbox_" + id).checked
+    let changeRole = new XMLHttpRequest()
+    changeRole.open("GET", "scripts/changerole.php?id=" + id + "&support=" + support + "&admin=" + admin + "&root=" + root)
+    changeRole.send()
+    document.getElementById("save_button_" + id).hidden = true
+}
