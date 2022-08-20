@@ -83,38 +83,36 @@ function change_sort() {
     }
     getTickets(false)
 }
-try {
-    function getTickets(check=true) {
-        let getData = new XMLHttpRequest()
-        getData.responseType = "document"
-        getData.open("GET", "xhr/gettickets.php?personal=no&sort=" + sort + "&limit=" + limit)
-        getData.onload = function () {
-            if (document.getElementById("for_tickets").innerHTML != getData.response.body.innerHTML) {
-                if (check){
-                    document.getElementById("update_xhr").hidden=false
-                } else{
-                    document.getElementById("for_tickets").innerHTML = getData.response.body.innerHTML
-                }
+function getTickets(check = true) {
+    let getData = new XMLHttpRequest()
+    getData.responseType = "document"
+    getData.open("GET", "xhr/gettickets.php?personal=no&sort=" + sort + "&limit=" + limit)
+    getData.onload = function () {
+        if (document.getElementById("for_tickets").innerHTML != getData.response.body.innerHTML) {
+            if (check) {
+                document.getElementById("update_xhr").hidden = false
+            } else {
+                document.getElementById("for_tickets").innerHTML = getData.response.body.innerHTML
             }
         }
-        getData.send()
     }
+    getData.send()
+}
+if (cangettickets) {
     getTickets(false)
     let check_updates = setInterval(getTickets, 5000)
-} catch (error) {
-    
 }
 
-function search_for_id(){
-    let id =document.getElementById("id_search").value
+function search_for_id() {
+    let id = document.getElementById("id_search").value
     let getTicket = new XMLHttpRequest()
     getTicket.responseType = "document"
-    getTicket.open("GET","scripts/checkticket.php?id="+id)
-    getTicket.onload = function(){
-        if (getTicket.response.body.innerHTML=="0"){
+    getTicket.open("GET", "scripts/checkticket.php?id=" + id)
+    getTicket.onload = function () {
+        if (getTicket.response.body.innerHTML == "0") {
             alert(document.getElementById("id_search").getAttribute("error_message"))
-        } else{
-            window.location = "ticket.php?id="+id
+        } else {
+            window.location = "ticket.php?id=" + id
         }
     }
     getTicket.send()
