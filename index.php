@@ -34,20 +34,9 @@ include("frames/head.php");
         <div id="forms-wrap">
             <div>
                 <div id="change_language_main_wrap">
-                    <select name="UI_LANG" id="change_language_main" onchange="change_language()">
-                        <?php
-                        $dirs = scandir("lang");
-                        foreach ($dirs as $lang) {
-                            if ($lang != "." and $lang != "..") {
-                                if ($_COOKIE["UI_LANG"] == $lang) {
-                                    echo '<option value="' . $lang . '" selected>' . $lang . '</option>';
-                                } else {
-                                    echo '<option value="' . $lang . '">' . $lang . '</option>';
-                                }
-                            }
-                        }
-                        ?>
-                    </select>
+                    <?php
+                    include("frames/selectlanguage.php")
+                    ?>
                 </div>
                 <div id="loginform">
                     <form action="scripts/login.php" method="post">
@@ -88,16 +77,5 @@ include("frames/head.php");
     <?php endif; ?>
 </body>
 <script src="index_script.js"></script>
-<script>
-    function change_language() {
-        let changelanguage = new XMLHttpRequest()
-        changelanguage.open("GET", "scripts/changelanguage.php?ui=" + document.getElementById("change_language_main").value)
-        changelanguage.onload = function() {
-            document.location = document.location
-        }
-        changelanguage.send()
-
-    }
-</script>
 
 </html>

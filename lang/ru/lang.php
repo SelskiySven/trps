@@ -48,3 +48,4 @@ $TRPS["lang"]["page"] = "Страница";
 $TRPS["lang"]["of"] = "из";
 $TRPS["lang"]["go"] = "Перейти";
 $TRPS["lang"]["save"] = "Сохранить";
+$TRPS["lang"]["notifications"] = "Уведомления";
