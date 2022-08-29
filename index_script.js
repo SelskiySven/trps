@@ -88,11 +88,11 @@ function getTickets(check = true) {
     getData.responseType = "document"
     getData.open("GET", "xhr/gettickets.php?personal=no&sort=" + sort + "&limit=" + limit)
     getData.onload = function () {
-        if (document.getElementById("for_tickets").innerHTML != getData.response.body.innerHTML) {
+        if (document.getElementById("for_tickets").innerHTML != getData.response.getElementById("tickets").innerHTML) {
             if (check) {
-                document.getElementById("update_xhr").hidden = false
+                document.getElementById("update_xhr").classList.remove("hidden")
             } else {
-                document.getElementById("for_tickets").innerHTML = getData.response.body.innerHTML
+                document.getElementById("for_tickets").innerHTML = getData.response.getElementById("tickets").innerHTML
             }
         }
     }
@@ -116,4 +116,10 @@ function search_for_id() {
         }
     }
     getTicket.send()
+}
+
+for (i of document.getElementsByClassName("sort_arrow")){
+    i.addEventListener("click", (e)=>{
+        e.target.classList.toggle("resort")
+    })
 }

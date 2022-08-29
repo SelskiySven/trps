@@ -13,7 +13,7 @@
         include("selectlanguage.php");
         ?>
         <span id="user_menu_wrap">
-            <span id="user_profile" onclick="force_open()"><?php echo $USER->firstname . " " . $USER->lastname; ?></span>
+            <span id="user_profile" onclick="force_open(true)"><?php echo $USER->firstname . " " . $USER->lastname; ?></span>
             <span id="user_menu">
                 <a href=""><?php echo $TRPS["lang"]["notifications"]; ?></a>
                 <a href="scripts/exit.php"><?php echo $TRPS["lang"]["exit"]; ?></a>
@@ -24,8 +24,8 @@
 <script>
     let menu_is_closed = true
 
-    function force_open() {
-        if (document.getElementById("user_menu").style.display != "block" | menu_is_closed) {
+    function force_open(open=false) {
+        if (document.getElementById("user_menu").style.display != "block" & menu_is_closed & open) {
             document.getElementById("user_menu").style.display = "block"
             setTimeout(() => {
                 menu_is_closed = false
