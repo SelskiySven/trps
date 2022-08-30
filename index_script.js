@@ -123,3 +123,9 @@ for (i of document.getElementsByClassName("sort_arrow")){
         e.target.classList.toggle("resort")
     })
 }
+
+document.addEventListener( 'keydown', event => {
+    if (event.key == "Enter" & event.target==document.getElementById("id_search")){
+        search_for_id()
+    }
+  });

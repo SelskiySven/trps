@@ -8,6 +8,7 @@
 * {
     font-family: Arial, sans-serif;
     color: var(--dark-color);
+    font-size: 2vh;
 }
 
 body {
@@ -350,39 +351,49 @@ select:hover {
     display: flex;
     align-items: center;
     width: 70vmin;
-    justify-content: space-between;
 }
 
-.table{
+.controls span{
+    margin-right: 2vmin;
+}
+
+.table {
     background-color: var(--light-color);
     margin: 1vmin 0 0 0;
 }
-.table tbody tr:nth-child(odd){
+
+.table tbody tr:nth-child(odd) {
     background-color: var(--mid-color);
 }
-.table tbody tr a{
+
+.table tbody tr a {
     text-decoration: none;
 }
-.table tbody tr td:nth-child(1){
+
+.table tbody tr td:nth-child(1) {
     width: 60vmin;
 }
-.hidden{
+.table thead tr th{
+    padding-right: 1vmin;
+}
+.hidden {
     z-index: -1;
     opacity: 0;
 }
-.input_styled{
+
+.input_styled {
     border-radius: .5vmin;
-    border: none;
     outline: none;
     margin-right: .5vmin;
     padding: .5vmin;
     border: 1px solid var(--mid-color);
 }
-.input_styled.small{
+
+.input_styled.small {
     width: 7vmin;
 }
-.button_styled{
-    border: none;
+
+.button_styled {
     outline: none;
     color: var(--dark-color);
     background-color: var(--light-color);
@@ -390,4 +401,49 @@ select:hover {
     border-radius: .5vmin;
     border: 1px solid var(--mid-color);
     cursor: pointer;
+}
+
+.checkbox_styled {
+    cursor: pointer;
+    position: relative;
+    width: 4vmin;
+    height: 2vmin;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    background-color: #c6c6c6;
+    border-radius: 1vmin;
+    transition: .5s;
+    box-shadow: inset 0 0 .4vmin rgba(0, 0, 0, .2);
+}
+
+.checkbox_styled:before {
+    content: '';
+    position: absolute;
+    width: 2vmin;
+    height: 2vmin;
+    border-radius: 1vmin;
+    background-color: white;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    transform: scale(1.1);
+    box-shadow: 0 .2vmin .4vmin rgba(0, 0, 0, .2);
+}
+
+.checkbox_styled:checked {
+    background-color: greenyellow !important;
+}
+
+.checkbox_styled:checked:before {
+    left: 2vmin;
+}
+
+.checkbox_styled:disabled{
+    background-color: gainsboro;
+}
+
+.checkbox_styled:disabled::before{
+    background-color: gainsboro;
 }

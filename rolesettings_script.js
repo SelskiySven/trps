@@ -45,7 +45,7 @@ function change_sort_type() {
     reload()
 }
 function show_button(id) {
-    document.getElementById("save_button_" + id).hidden = false
+    document.getElementById("save_button_" + id).classList.remove("hidden")
 }
 function change_role(id) {
     let support = 0 + document.getElementById("support_checkbox_" + id).checked
@@ -56,3 +56,9 @@ function change_role(id) {
     changeRole.send()
     document.getElementById("save_button_" + id).hidden = true
 }
+
+document.addEventListener( 'keydown', event => {
+    if (event.key == "Enter" & event.target==document.getElementById("search_user")){
+        search_by_name()
+    }
+  });

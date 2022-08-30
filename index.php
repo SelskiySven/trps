@@ -21,7 +21,7 @@ include("frames/head.php");
             <div class="centred">
                 <div>
                     <div class="controls">
-                        <div><input class="input_styled small" type="text" error_message=<?php echo "'" . $TRPS["lang"]["ticket_do_not_exists"] . "'" ?> id="id_search"><button class="button_styled" onclick="search_for_id()"><?php echo $TRPS["lang"]["search_by_id"] ?></button></div>
+                        <span><input class="input_styled small" type="text" error_message=<?php echo "'" . $TRPS["lang"]["ticket_do_not_exists"] . "'" ?> id="id_search"><button class="button_styled" onclick="search_for_id()"><?php echo $TRPS["lang"]["search_by_id"] ?></button></span>
                         <span class="sort" onclick="change_limit(10)">10</span>
                         <span class="sort" onclick="change_limit(50)">50</span>
                         <span class="sort" onclick="change_limit(100)">100</span>
