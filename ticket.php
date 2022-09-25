@@ -38,8 +38,12 @@ include("frames/head.php");
     <?php if (!($USER->support or $USER->admin or $USER->root) and $row["solved"] == 0) : ?>
         <button onclick="closeTicket()"><?php echo $TRPS["lang"]["problem_solved"]; ?></button>
     <?php endif; ?>
+    <div class="centred" id="messager">
     <div id="for_messages"></div>
+    </div>
+    <div class="centred">
     <textarea name="" id="new_message"></textarea>
     <button onclick="send_message()"><?php echo $TRPS["lang"]["send"]; ?></button>
+    </div>
 </body>
 <script src="ticket_script.js"></script>

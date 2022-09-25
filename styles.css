@@ -250,6 +250,7 @@ select:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 10vw;
 }
 
 #user_profile:hover,
@@ -268,10 +269,9 @@ select:hover {
 
 #user_profile::after {
     content: ">";
-    position: relative;
+    position: absolute;
     rotate: 90deg;
-    top: 40%;
-    left: -50%;
+    top: 4.5vh;
 }
 
 #user_menu_wrap:hover #user_menu {
@@ -283,11 +283,13 @@ select:hover {
     margin: 0;
     display: none;
     transition: .1s;
+    position: absolute;
 }
 
 #user_menu a {
     background-color: var(--dark-color);
     color: var(--light-color);
+    border-top: 1px solid var(--mid-color);
     padding: 1vmin;
     height: auto;
     transition: .1s;
@@ -446,4 +448,60 @@ select:hover {
 
 .checkbox_styled:disabled::before{
     background-color: gainsboro;
+}
+
+.my_message{
+    border-radius: 1vmin;
+    border-bottom-right-radius: 0;
+    padding: 1vmin 1vmin 0 1vmin;
+    width: 70vmin;
+    float: right;
+    margin-bottom: 1vmin;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+.not_my_message{
+    border-radius: 1vmin;
+    border-bottom-left-radius: 0;
+    padding: 1vmin 1vmin 0 1vmin;
+    width: 70vmin;
+    margin-bottom: 1vmin;
+    float: left;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+.message_info{
+    color: var(--mid-color);
+    font-size: 1.3vh;
+    margin: 1vmin;
+    float: right;
+}
+
+#for_messages{
+    width: 100vmin;
+    height: 50vh;
+    overflow-y: auto;
+    scrollbar-color: rgb(80, 163, 190) var(--mid-color);
+    scrollbar-width: thin;
+}
+
+textarea{
+    resize: none;
+}
+
+#for_messages::-webkit-scrollbar {
+    background-color: var(--mid-color);
+    width: 10px;
+    border-radius: 10px;
+}
+
+#for_messages::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+#for_messages::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(180deg, #00c6fb, #005bea);
 }

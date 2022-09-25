@@ -54,7 +54,7 @@ function change_role(id) {
     let changeRole = new XMLHttpRequest()
     changeRole.open("GET", "scripts/changerole.php?id=" + id + "&support=" + support + "&admin=" + admin + "&root=" + root)
     changeRole.send()
-    document.getElementById("save_button_" + id).hidden = true
+    document.getElementById("save_button_" + id).classList.add("hidden")
 }
 
 document.addEventListener( 'keydown', event => {

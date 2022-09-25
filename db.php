@@ -2,7 +2,7 @@
 $TRPS["servername"] = "localhost";
 $TRPS["username"] = "root";
 $TRPS["password"] = null;
-$TRPS["dbname"] = "support_database";
+$TRPS["dbname"] = "trps";
 $TRPS["salt"] = "My_strong_salt";
 $TRPS["document_root"]="/trps/index.php";
 $TRPS["default_language"] = "ru";

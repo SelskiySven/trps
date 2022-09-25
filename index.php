@@ -58,7 +58,7 @@ include("frames/head.php");
                         <div class="inputWrap"><input type="text" name="login" required><span class="formPlaceholder"><?php echo $TRPS["lang"]["login"] ?></span><i></i></div>
                         <div class="inputWrap"><input type="password" name="password" required><span class="formPlaceholder"><?php echo $TRPS["lang"]["password"] ?></span><i></i></div>
                         <div><?php if (isset($_SESSION["incorrect_input"])) {
-                                    echo $TRPS["lang"]["incorrect_login_or_password"];
+                                    echo $TRPS["lang"]["hint_incorrect_login_or_password"];
                                     unset($_SESSION["incorrect_input"]);
                                 } ?></div>
                         <div class="underForm"><input class="formSubmit" type="submit" value=<?php echo '"' . $TRPS["lang"]["submit_login"] . '"' ?>>
@@ -75,11 +75,11 @@ include("frames/head.php");
                             <div class="formHint" id="last_name_hint" title=<?php echo "'" . $TRPS["lang"]["enter_last_name"] . "'" ?> hidden></div>
                         </div>
                         <div class="inputWrap"><input type="text" name="login" id="registration_login" onchange="checkLogin()" oninput="onChangeLogin()" required><span class="formPlaceholder"><?php echo $TRPS["lang"]["login"] ?></span><i></i>
-                            <div class="formHint" id="login_hint" title=<?php echo "'" . $TRPS["lang"]["incorrect_login_length"] . "'" ?> hidden></div>
-                            <div class="formHint" id="login_exists" title=<?php echo "'" . $TRPS["lang"]["login_exists"] . "'" ?> hidden></div>
+                            <div class="formHint" id="login_hint" title=<?php echo "'" . $TRPS["lang"]["hint_incorrect_login_length"] . "'" ?> hidden></div>
+                            <div class="formHint" id="login_exists" title=<?php echo "'" . $TRPS["lang"]["hint_login_exists"] . "'" ?> hidden></div>
                         </div>
                         <div class="inputWrap"><input type="password" name="password" id="registration_password" oninput="onChangePassword(); onChangePasswordRepeat()" required><span class="formPlaceholder"><?php echo $TRPS["lang"]["password"] ?></span><i></i>
-                            <div class="formHint" id="password_hint" title=<?php echo "'" . $TRPS["lang"]["incorrect_password_length"] . "'" ?> hidden></div>
+                            <div class="formHint" id="password_hint" title=<?php echo "'" . $TRPS["lang"]["hint_incorrect_password_length"] . "'" ?> hidden></div>
                         </div>
                         <div class="inputWrap"><input type="password" name="repeat_password" id="registration_password_repeat" oninput="onChangePasswordRepeat()" required><span class="formPlaceholder"><?php echo $TRPS["lang"]["repeat_password"] ?></span><i></i>
                             <div class="formHint" id="repeat_password_hint" title=<?php echo "'" . $TRPS["lang"]["passwords_dont_same"] . "'" ?> hidden></div>

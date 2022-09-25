@@ -3,10 +3,13 @@ function send_message() {
     document.getElementById("new_message").blur()
     document.getElementById("new_message").value = ""
     message=message.replaceAll('\n',"\\n")
+    message=message.replaceAll('"','\\"')
+    message=message.replaceAll("'","\\'")
+    message=message.replaceAll("&","%26")
     if (message != "") {
         let ticket_id = document.getElementById("ticket_id").getAttribute("ticket_id")
         let sendMessage = new XMLHttpRequest()
-        sendMessage.open("GET", "scripts/createmessage.php?message='" + message + "'&ticket=" + ticket_id)
+        sendMessage.open("GET", 'scripts/createmessage.php?message="' + message + '"&ticket=' + ticket_id)
         sendMessage.onload = get_messages
         sendMessage.send()
     }
