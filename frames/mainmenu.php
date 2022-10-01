@@ -31,8 +31,10 @@
                 menu_is_closed = false
             }, 100);
         } else {
+            if (!menu_is_closed){
             document.getElementById("user_menu").style.display = ""
             menu_is_closed = true
+            }
         }
     }
     document.addEventListener("click", force_open)

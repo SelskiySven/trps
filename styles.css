@@ -153,7 +153,6 @@ body {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
-    font-size: 2vmin;
     margin-bottom: 1vmin;
 }
 
@@ -167,6 +166,7 @@ body {
     transition: .1s;
     padding: 0 1vmin;
     white-space: nowrap;
+    font-size: 2vmin;
 }
 
 .mainnav a:hover,
@@ -198,6 +198,10 @@ body {
     -moz-user-select: none;
     -webkit-user-select: none;
     transition: .1s .3s;
+}
+
+.select div{
+    font-size: 2vmin;
 }
 
 .select_open {
@@ -243,20 +247,19 @@ select:hover {
 
 #user_profile {
     border-top: .5vh solid var(--brand-color);
-    border-bottom: .5vh solid var(--dark-color);
     padding: 0 1vmin;
     color: var(--light-color);
-    height: 6vh;
+    height: 6.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 10vw;
+    min-width: 13vw;
+    font-size: 2vmin;
 }
 
 #user_profile:hover,
 #user_profile:active {
     background-color: var(--light-color);
-    border-bottom: .5vh solid var(--light-color);
     color: var(--dark-color);
     transition: .1s;
 }
@@ -283,15 +286,16 @@ select:hover {
     margin: 0;
     display: none;
     transition: .1s;
-    position: absolute;
+    position: relative;
+    width: 100%;
 }
 
 #user_menu a {
     background-color: var(--dark-color);
     color: var(--light-color);
     border-top: 1px solid var(--mid-color);
-    padding: 1vmin;
     height: auto;
+    padding: 1vmin;
     transition: .1s;
 }
 
@@ -455,8 +459,10 @@ select:hover {
     border-bottom-right-radius: 0;
     padding: 1vmin 1vmin 0 1vmin;
     width: 70vmin;
+    font-size: 2vmin;
     float: right;
     margin-bottom: 1vmin;
+    word-wrap: break-word;
     background-color: var(--dark-color);
     color: var(--light-color);
 }
@@ -466,42 +472,62 @@ select:hover {
     border-bottom-left-radius: 0;
     padding: 1vmin 1vmin 0 1vmin;
     width: 70vmin;
+    font-size: 2vmin;
     margin-bottom: 1vmin;
     float: left;
+    word-wrap: break-word;
     background-color: var(--light-color);
     color: var(--dark-color);
 }
 
 .message_info{
     color: var(--mid-color);
-    font-size: 1.3vh;
+    font-size: 1.3vmin;
     margin: 1vmin;
     float: right;
 }
 
 #for_messages{
     width: 100vmin;
-    height: 50vh;
-    overflow-y: auto;
-    scrollbar-color: rgb(80, 163, 190) var(--mid-color);
-    scrollbar-width: thin;
 }
 
 textarea{
     resize: none;
 }
 
-#for_messages::-webkit-scrollbar {
-    background-color: var(--mid-color);
-    width: 10px;
-    border-radius: 10px;
+.my_problem_wrap{
+    border-radius: 1vmin;
+    padding: 1vmin;
+    width: 70vmin;
+    float: right;
+    margin-bottom: 1vmin;
+    background-color: var(--dark-color);
+    color: var(--light-color);
 }
 
-#for_messages::-webkit-scrollbar-track {
-    border-radius: 10px;
+.not_my_problem_wrap{
+    border-radius: 1vmin;
+    padding: 1vmin;
+    width: 70vmin;
+    float: left;
+    margin-bottom: 1vmin;
+    background-color: var(--light-color);
+    color: var(--dark-color);
 }
 
-#for_messages::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: linear-gradient(180deg, #00c6fb, #005bea);
+.not_my_problem_wrap div{
+    font-size: 2vmin;
+}
+
+.my_problem_wrap div{
+    font-size: 2vmin;
+}
+
+.problem_info{
+    position: absolute;
+    margin: 1vmin;
+}
+
+.problem_info h3{
+    margin: 1vmin 0;
 }

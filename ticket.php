@@ -4,7 +4,6 @@ include("frames/head.php");
 
 <body>
     <?php include("frames/mainmenu.php") ?>
-    <h3 id="ticket_id" ticket_id=<?php echo "'" . $_GET["id"] . "'"; ?>><?php echo $TRPS["lang"]["id_of_problem"] . $_GET["id"]; ?></h3>
     <?php
     $result = $Mysql->query("SELECT `title`,`problem`,`created_by`, `worked_by`, `solved` FROM `tickets` WHERE id=" . $_GET["id"]);
     if ($result->num_rows == 0) {
@@ -17,8 +16,8 @@ include("frames/head.php");
         exit;
     }
     ?>
-    <h3><?php echo $TRPS["lang"]["title_of_problem"] . ": " . $row["title"]; ?></h3>
-    <h3><?php echo $TRPS["lang"]["problem"] . ": " . $row["problem"]; ?></h3>
+    <div class="problem_info">
+    <h3 id="ticket_id" ticket_id=<?php echo "'" . $_GET["id"] . "'"; ?>><?php echo $TRPS["lang"]["id_of_problem"] . $_GET["id"]; ?></h3>
     <?php if ($row["solved"] == 0 and $row["worked_by"] == 0) : ?>
         <h3><?php echo $TRPS["lang"]["status"] . ": " . $TRPS["lang"]["open"]; ?></h3>
     <?php endif; ?>
@@ -33,17 +32,31 @@ include("frames/head.php");
     }
     ?>
     <?php if ($row["solved"] == 0 and $row["worked_by"] == 0 and ($USER->support or $USER->admin or $USER->root)) : ?>
-        <button id="take_ticket" onclick="takeTicket()" error=<?php echo "'" . $TRPS["lang"]["someone_support_this_ticket"] . "'"; ?>><?php echo $TRPS["lang"]["take"]; ?></button>
+        <button id="take_ticket" onclick="takeTicket()" class="button_styled" error=<?php echo "'" . $TRPS["lang"]["someone_support_this_ticket"] . "'"; ?>><?php echo $TRPS["lang"]["take"]; ?></button>
     <?php endif; ?>
     <?php if (!($USER->support or $USER->admin or $USER->root) and $row["solved"] == 0) : ?>
-        <button onclick="closeTicket()"><?php echo $TRPS["lang"]["problem_solved"]; ?></button>
+        <button onclick="closeTicket()" class="button_styled"><?php echo $TRPS["lang"]["problem_solved"]; ?></button>
     <?php endif; ?>
+    </div>
     <div class="centred" id="messager">
-    <div id="for_messages"></div>
+        <div>
+        <?php if ($row["created_by"] == $USER->ID) : ?>
+        <span class="my_problem_wrap">
+            <div><?php echo $row["title"]; ?></div>
+            <div><?php echo $row["problem"]; ?></div>
+        </span>
+        <?php else: ?>
+            <span class="not_my_problem_wrap">
+            <div><?php echo $row["title"]; ?></div>
+            <div><?php echo $row["problem"]; ?></div>
+        </span>
+        <?php endif; ?>
+        <div id="for_messages"></div>
+        </div>
     </div>
     <div class="centred">
-    <textarea name="" id="new_message"></textarea>
-    <button onclick="send_message()"><?php echo $TRPS["lang"]["send"]; ?></button>
+        <textarea name="" id="new_message"></textarea>
+        <button onclick="send_message()"><?php echo $TRPS["lang"]["send"]; ?></button>
     </div>
 </body>
 <script src="ticket_script.js"></script>
